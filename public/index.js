@@ -8,7 +8,7 @@ module.exports=function(i){i.use(function(i,t){i.drift={track:function(i){window
 
 var request=require("superagent"); var pick=require("pick-random");module.exports=function(e){e.use(function(e,t){t.on("navigate",function(){e.successMessage="",e.failureMessage="",e.items=null,e.item=null,e.track("navigate:"+e.route.slice(1));}),e.track=function(t){e.mixpanel.track(t),e.drift.track(t);};});};
 
-},{"pick-random":30,"superagent":35}],3:[function(require,module,exports){
+},{"pick-random":31,"superagent":36}],3:[function(require,module,exports){
 'use strict';
 
 module.exports=function(e){e.use(function(e,n){e.mixpanel={track:function(e){window.mixpanel.track(e);},identify:function(e){console.log("IDENTIFY:",e),window.mixpanel.identify(e);},createIdentity:function(e){window.mixpanel.people.set({$email:e.email,$created:e.created_at,$last_login:new Date,pantries:1,pantryItems:0});}};});};
@@ -16,19 +16,24 @@ module.exports=function(e){e.use(function(e,n){e.mixpanel={track:function(e){win
 },{}],4:[function(require,module,exports){
 'use strict';
 
-var landing=require("../views/landing");module.exports=function(n){n.route("/",landing);};
+var landing=require("../views/landing"); var watch=require("../views/watch");module.exports=function(e){e.route("/",landing),e.route("/watch",watch);};
 
-},{"../views/landing":5}],5:[function(require,module,exports){
+},{"../views/landing":5,"../views/watch":6}],5:[function(require,module,exports){
 'use strict';
 
-function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex"><div class="strike">You</div>Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">Search</button>\n          </form>\n        </div>\n      </section>\n      <section id="videos" class="flex flex-column pl4">\n        ',"\n      </section>\n    </div>\n  "],['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex"><div class="strike">You</div>Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">Search</button>\n          </form>\n        </div>\n      </section>\n      <section id="videos" class="flex flex-column pl4">\n        ',"\n      </section>\n    </div>\n  "]); var _templateObject2=_taggedTemplateLiteral(['\n              <a href="/watch?v=','" class="flex justify-center">\n                <div class="video flex mb3 w-50 items-center">\n                  <div>\n                    <img src="','" alt="','">\n                  </div>\n                  <div class="flex flex-column pl3">\n                    <div class="b">',"</div>\n                    <div>","</div>\n                  </div>\n                </div>\n              </a>\n            "],['\n              <a href="/watch?v=','" class="flex justify-center">\n                <div class="video flex mb3 w-50 items-center">\n                  <div>\n                    <img src="','" alt="','">\n                  </div>\n                  <div class="flex flex-column pl3">\n                    <div class="b">',"</div>\n                    <div>","</div>\n                  </div>\n                </div>\n              </a>\n            "]); var html=require("choo/html"); var request=require("superagent"); var getFormData=require("get-form-data"); var moment=require("moment");module.exports=function(e,t){return html(_templateObject,function(n){n.preventDefault();var i=getFormData(n.target);e.searchTerm=i.searchTerm,request("/api/search").query({term:i.searchTerm}).end(function(n,i){n||(e.videos=i.body,t("render"));});},e.searchTerm||"",(e.videos||[]).map(function(e){return console.log("VIDEO:",e),html(_templateObject2,e.id,e.thumbnail,e.title,e.title,e.description)}))};
+function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex">Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">Search</button>\n          </form>\n        </div>\n      </section>\n      <section id="videos" class="flex flex-column pl4">\n        ',"\n      </section>\n    </div>\n  "],['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex">Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">Search</button>\n          </form>\n        </div>\n      </section>\n      <section id="videos" class="flex flex-column pl4">\n        ',"\n      </section>\n    </div>\n  "]); var _templateObject2=_taggedTemplateLiteral(['\n              <a href="/watch?v=','" class="flex justify-center">\n                <div class="video flex mb3 w-50 items-center">\n                  <div>\n                    <img src="','" alt="','">\n                  </div>\n                  <div class="flex flex-column pl3">\n                    <div class="b">',"</div>\n                    <div>","</div>\n                  </div>\n                </div>\n              </a>\n            "],['\n              <a href="/watch?v=','" class="flex justify-center">\n                <div class="video flex mb3 w-50 items-center">\n                  <div>\n                    <img src="','" alt="','">\n                  </div>\n                  <div class="flex flex-column pl3">\n                    <div class="b">',"</div>\n                    <div>","</div>\n                  </div>\n                </div>\n              </a>\n            "]); var html=require("choo/html"); var request=require("superagent"); var getFormData=require("get-form-data"); var moment=require("moment");module.exports=function(e,t){return html(_templateObject,function(n){n.preventDefault();var i=getFormData(n.target);e.searchTerm=i.searchTerm,request("/api/search").query({term:i.searchTerm}).end(function(n,i){n||(e.videos=i.body,t("render"));});},e.searchTerm||"",(e.videos||[]).map(function(e){return html(_templateObject2,e.id,e.thumbnail,e.title,e.title,e.description)}))};
 
-},{"choo/html":10,"get-form-data":14,"moment":17,"superagent":35}],6:[function(require,module,exports){
+},{"choo/html":11,"get-form-data":15,"moment":18,"superagent":36}],6:[function(require,module,exports){
+'use strict';
+
+function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n    <div>\n      <div class="absolute" style="z-index:1">\n        <a href="#" onclick=',' class="black">\n          <i class="fal fa-arrow-alt-circle-left fa-3x"></i>\n        </a>\n      </div>\n      <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <div class="embed-container">\n        <iframe src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>\n      </div>\n    </div>\n  '],['\n    <div>\n      <div class="absolute" style="z-index:1">\n        <a href="#" onclick=',' class="black">\n          <i class="fal fa-arrow-alt-circle-left fa-3x"></i>\n        </a>\n      </div>\n      <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <div class="embed-container">\n        <iframe src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>\n      </div>\n    </div>\n  ']); var html=require("choo/html"); var request=require("superagent"); var getFormData=require("get-form-data"); var moment=require("moment");module.exports=function(e,t){return html(_templateObject,function(e){e.preventDefault(),console.log("BLEH:"),t("pushState","/");},e.query.v)};
+
+},{"choo/html":11,"get-form-data":15,"moment":18,"superagent":36}],7:[function(require,module,exports){
 'use strict';
 
 var choo=require("choo"); var app=choo();require("./lib/router")(app),require("./lib/global")(app),require("./lib/drift")(app),require("./lib/mixpanel")(app),document.body.appendChild(app.start());
 
-},{"./lib/drift":1,"./lib/global":2,"./lib/mixpanel":3,"./lib/router":4,"choo":11}],7:[function(require,module,exports){
+},{"./lib/drift":1,"./lib/global":2,"./lib/mixpanel":3,"./lib/router":4,"choo":12}],8:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -522,7 +527,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":42}],8:[function(require,module,exports){
+},{"util/":43}],9:[function(require,module,exports){
 var trailingNewlineRegex = /\n[\s]+$/
 var leadingNewlineRegex = /^\n[\s]+/
 var trailingSpaceRegex = /[\s]+$/
@@ -655,7 +660,7 @@ module.exports = function appendChild (el, childs) {
   }
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var hyperx = require('hyperx')
 var appendChild = require('./appendChild')
 
@@ -756,10 +761,10 @@ module.exports = hyperx(belCreateElement, {comments: true})
 module.exports.default = module.exports
 module.exports.createElement = belCreateElement
 
-},{"./appendChild":8,"hyperx":16}],10:[function(require,module,exports){
+},{"./appendChild":9,"hyperx":17}],11:[function(require,module,exports){
 module.exports = require('bel')
 
-},{"bel":9}],11:[function(require,module,exports){
+},{"bel":10}],12:[function(require,module,exports){
 var scrollToAnchor = require('scroll-to-anchor')
 var documentReady = require('document-ready')
 var nanolocation = require('nanolocation')
@@ -971,7 +976,7 @@ Choo.prototype.toString = function (location, state) {
   return html.toString()
 }
 
-},{"assert":7,"document-ready":13,"nanobus":19,"nanohref":20,"nanolocation":21,"nanomorph":22,"nanoquery":25,"nanoraf":26,"nanorouter":27,"nanotiming":28,"scroll-to-anchor":33,"xtend":45}],12:[function(require,module,exports){
+},{"assert":8,"document-ready":14,"nanobus":20,"nanohref":21,"nanolocation":22,"nanomorph":23,"nanoquery":26,"nanoraf":27,"nanorouter":28,"nanotiming":29,"scroll-to-anchor":34,"xtend":46}],13:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -1136,7 +1141,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict'
 
 var assert = require('assert')
@@ -1155,7 +1160,7 @@ function ready (callback) {
   })
 }
 
-},{"assert":7}],14:[function(require,module,exports){
+},{"assert":8}],15:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1340,7 +1345,7 @@ getFormData.getNamedFormElementData = getNamedFormElementData;
 
 exports['default'] = getFormData;
 module.exports = exports['default'];
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = attributeToProperty
 
 var transform = {
@@ -1361,7 +1366,7 @@ function attributeToProperty (h) {
   }
 }
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var attrToProp = require('hyperscript-attribute-to-property')
 
 var VAR = 0, TEXT = 1, OPEN = 2, CLOSE = 3, ATTR = 4
@@ -1644,7 +1649,7 @@ var closeRE = RegExp('^(' + [
 ].join('|') + ')(?:[\.#][a-zA-Z0-9\u007F-\uFFFF_:-]+)*$')
 function selfClosing (tag) { return closeRE.test(tag) }
 
-},{"hyperscript-attribute-to-property":15}],17:[function(require,module,exports){
+},{"hyperscript-attribute-to-property":16}],18:[function(require,module,exports){
 //! moment.js
 //! version : 2.20.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -6181,7 +6186,7 @@ return hooks;
 
 })));
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 assert.notEqual = notEqual
 assert.notOk = notOk
 assert.equal = equal
@@ -6205,7 +6210,7 @@ function assert (t, m) {
   if (!t) throw new Error(m || 'AssertionError')
 }
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var splice = require('remove-array-items')
 var nanotiming = require('nanotiming')
 var assert = require('assert')
@@ -6369,7 +6374,7 @@ Nanobus.prototype._emit = function (arr, eventName, data, uuid) {
   }
 }
 
-},{"assert":7,"nanotiming":28,"remove-array-items":32}],20:[function(require,module,exports){
+},{"assert":8,"nanotiming":29,"remove-array-items":33}],21:[function(require,module,exports){
 var assert = require('assert')
 
 var safeExternalLink = /(noopener|noreferrer) (noopener|noreferrer)/
@@ -6411,7 +6416,7 @@ function href (cb, root) {
   })
 }
 
-},{"assert":7}],21:[function(require,module,exports){
+},{"assert":8}],22:[function(require,module,exports){
 var assert = require('assert')
 
 module.exports = nanolocation
@@ -6423,7 +6428,7 @@ function nanolocation () {
   return pathname + hash
 }
 
-},{"assert":7}],22:[function(require,module,exports){
+},{"assert":8}],23:[function(require,module,exports){
 var assert = require('assert')
 var morph = require('./lib/morph')
 
@@ -6574,7 +6579,7 @@ function same (a, b) {
   return false
 }
 
-},{"./lib/morph":24,"assert":18}],23:[function(require,module,exports){
+},{"./lib/morph":25,"assert":19}],24:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -6618,7 +6623,7 @@ module.exports = [
   'onfocusout'
 ]
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var events = require('./events')
 var eventsLength = events.length
 
@@ -6784,7 +6789,7 @@ function updateAttribute (newNode, oldNode, name) {
   }
 }
 
-},{"./events":23}],25:[function(require,module,exports){
+},{"./events":24}],26:[function(require,module,exports){
 var reg = /([^?=&]+)(=([^&]*))?/g
 var assert = require('assert')
 
@@ -6801,7 +6806,7 @@ function qs (url) {
   return obj
 }
 
-},{"assert":18}],26:[function(require,module,exports){
+},{"assert":19}],27:[function(require,module,exports){
 'use strict'
 
 var assert = require('assert')
@@ -6838,7 +6843,7 @@ function nanoraf (render, raf) {
   }
 }
 
-},{"assert":7}],27:[function(require,module,exports){
+},{"assert":8}],28:[function(require,module,exports){
 var wayfarer = require('wayfarer')
 
 var isLocalFile = (/file:\/\//.test(typeof window === 'object' &&
@@ -6898,7 +6903,7 @@ function pathname (route, isElectron) {
   return route.replace(suffix, '').replace(normalize, '/')
 }
 
-},{"wayfarer":43}],28:[function(require,module,exports){
+},{"wayfarer":44}],29:[function(require,module,exports){
 var assert = require('assert')
 
 var onIdle = require('./lib/on-idle')
@@ -6942,7 +6947,7 @@ function noop (cb) {
   if (cb) onIdle(cb)
 }
 
-},{"./lib/on-idle":29,"assert":7}],29:[function(require,module,exports){
+},{"./lib/on-idle":30,"assert":8}],30:[function(require,module,exports){
 var assert = require('assert')
 
 var dftOpts = {}
@@ -6975,7 +6980,7 @@ function onIdle (cb, opts) {
   }
 }
 
-},{"assert":7}],30:[function(require,module,exports){
+},{"assert":8}],31:[function(require,module,exports){
 'use strict';
 module.exports = (data, opts) => {
 	opts = Object.assign({count: 1}, opts);
@@ -7000,7 +7005,7 @@ module.exports = (data, opts) => {
 	return ret;
 };
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -7186,7 +7191,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict'
 
 /**
@@ -7216,7 +7221,7 @@ module.exports = function removeItems(arr, startIdx, removeCount)
   arr.length = len
 }
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = scrollToAnchor
 
 function scrollToAnchor (anchor, options) {
@@ -7228,7 +7233,7 @@ function scrollToAnchor (anchor, options) {
   }
 }
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 function Agent() {
   this._defaults = [];
 }
@@ -7250,7 +7255,7 @@ Agent.prototype._setDefaults = function(req) {
 
 module.exports = Agent;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 /**
  * Root reference for iframes.
  */
@@ -8170,7 +8175,7 @@ request.put = function(url, data, fn) {
   return req;
 };
 
-},{"./agent-base":34,"./is-object":36,"./request-base":37,"./response-base":38,"component-emitter":12}],36:[function(require,module,exports){
+},{"./agent-base":35,"./is-object":37,"./request-base":38,"./response-base":39,"component-emitter":13}],37:[function(require,module,exports){
 'use strict';
 
 /**
@@ -8187,7 +8192,7 @@ function isObject(obj) {
 
 module.exports = isObject;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 /**
@@ -8883,7 +8888,7 @@ RequestBase.prototype._setTimeouts = function() {
   }
 };
 
-},{"./is-object":36}],38:[function(require,module,exports){
+},{"./is-object":37}],39:[function(require,module,exports){
 'use strict';
 
 /**
@@ -9019,7 +9024,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
     this.notFound = 404 == status;
 };
 
-},{"./utils":39}],39:[function(require,module,exports){
+},{"./utils":40}],40:[function(require,module,exports){
 'use strict';
 
 /**
@@ -9092,7 +9097,7 @@ exports.cleanHeader = function(header, changesOrigin){
   return header;
 };
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -9117,14 +9122,14 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -9714,7 +9719,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":41,"_process":31,"inherits":40}],43:[function(require,module,exports){
+},{"./support/isBuffer":42,"_process":32,"inherits":41}],44:[function(require,module,exports){
 var assert = require('assert')
 var trie = require('./trie')
 
@@ -9781,7 +9786,7 @@ function Wayfarer (dft) {
   }
 }
 
-},{"./trie":44,"assert":7}],44:[function(require,module,exports){
+},{"./trie":45,"assert":8}],45:[function(require,module,exports){
 var mutate = require('xtend/mutable')
 var assert = require('assert')
 var xtend = require('xtend')
@@ -9920,7 +9925,7 @@ Trie.prototype.mount = function (route, trie) {
   }
 }
 
-},{"assert":7,"xtend":45,"xtend/mutable":46}],45:[function(require,module,exports){
+},{"assert":8,"xtend":46,"xtend/mutable":47}],46:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -9941,7 +9946,7 @@ function extend() {
     return target
 }
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -9960,4 +9965,4 @@ function extend(target) {
     return target
 }
 
-},{}]},{},[6]);
+},{}]},{},[7]);

@@ -85,12 +85,7 @@ router.use('*', (req, res, next) => {
 
   // What routes to respond with index.html with
   const publicRoutes = [
-    new RegExp('/login'),
-    new RegExp('/register'),
-    new RegExp('/dashboard'),
-    new RegExp('/item/.*'),
-    new RegExp('/resetPassword'),
-    new RegExp('/onboarding')
+    new RegExp('/watch')
   ]
 
   const match = publicRoutes.some(route => {

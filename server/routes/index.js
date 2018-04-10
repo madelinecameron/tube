@@ -11,12 +11,14 @@ router.get('/search', (req, res, next) => {
   console.log("BLEH:", req.query)
 
   const opts = {
-    maxResults: 5,
+    maxResults: 10,
     key: 'AIzaSyA4xtLA0hDWOMYNl7VVFNGqb0FOWZdC1QE'
   }
 
   youtubeSearch(req.query.term, opts, (err, results) => {
     if (err) return console.log(err)
+
+    results = results.filter(vid => vid.id.length <= 11)
    
     const promises = results.map(async (video) => {
       return new Promise((resolve, reject) => {

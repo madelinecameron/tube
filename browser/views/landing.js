@@ -29,7 +29,7 @@ module.exports = (state, emit) => {
     <div>
       <section class="mt3 tc">
         <div class="flex justify-center">
-          <div id="header" class="f2 flex"><div class="strike">You</div>Tube</div>
+          <div id="header" class="f2 flex">Tube</div>
         </div>
         <div class="mt2 flex flex-column justify-center items-center" id="signup">
           <div class="w-50">
@@ -44,7 +44,6 @@ module.exports = (state, emit) => {
       <section id="videos" class="flex flex-column pl4">
         ${(() => {
           return (state.videos || []).map(video => {
-            console.log("VIDEO:", video)
             return html`
               <a href="/watch?v=${video.id}" class="flex justify-center">
                 <div class="video flex mb3 w-50 items-center">
