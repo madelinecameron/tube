@@ -34,6 +34,8 @@ module.exports = (state, emit) => {
         <div class="mt2 flex flex-column justify-center items-center" id="signup">
           <div class="w-50">
             Minimalist YouTube
+            <br><br>
+            DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems
           </div>
           <form class="mt3" onsubmit=${search}>
             <input type="text" class="pa2" name="searchTerm" value=${state.searchTerm || ''}>

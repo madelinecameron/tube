@@ -1,0 +1,15 @@
+server {
+  if ($host = www.movie.voyage) {
+    return 301 https://$host$request_uri;
+  }
+
+  if ($host = movie.voyage) {
+      return 301 https://$host$request_uri;
+  }
+
+  server_name www.tube.quinzel.tech tube.quinzel.tech;
+
+  location ~ {
+    proxy_pass http://127.0.0.1:3003;
+  }
+}

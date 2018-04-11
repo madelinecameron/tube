@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+#ssh root@207.148.18.22 -i ~/.ssh/id_rsa
+
+rsync -rave "ssh -i ~/.ssh/id_rsa" infra/tube.conf root@207.148.18.22:/etc/supervisor/conf.d;
+rsync -rave "ssh -i ~/.ssh/id_rsa" infra/tube_http root@207.148.18.22:/etc/nginx/sites-available;
+
+ssh root@207.148.18.22 -i ~/.ssh/id_rsa "ln -s /etc/nginx/sites-available/tube_http /etc/nginx/sites-enabled/ && sudo service nginx reload && sudo service nginx restart && sudo supervisorctl reload && sudo supervisorctl restart tube && certbot --nginx && rm /etc/nginx/sites-enabled/tube_http && rm /etc/nginx/sites-available/tube_http"
+
+rsync -rave "ssh -i ~/.ssh/id_rsa" infra/tube root@207.148.18.22:/etc/nginx/sites-available;
+
+ssh root@207.148.18.22 -i ~/.ssh/id_rsa "ln -s /etc/nginx/sites-available/tube /etc/nginx/sites-enabled/ && sudo service nginx reload && sudo service nginx restart && sudo supervisorctl reload && sudo supervisorctl restart tube"

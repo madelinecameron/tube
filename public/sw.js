@@ -2,8 +2,7 @@ var cacheName = 'ayht';
 var filesToCache = [
   '/index.html',
   '/index.js',
-  '/img/header.jpg',
-  'js/fontawesome-all.js',
+  'js/fontawesome-all.min.js',
   '/img/icons/white'
 ];
 

@@ -5,13 +5,13 @@ const app = require('./app')
 
 if (process.env.ENV === 'production') {
   https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/areyouhappytoday.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/areyouhappytoday.com/cert.pem')
-  }, app).listen(3000, function(){
-    console.log("Express server listening on port 3000, ENV=production")
+    key: fs.readFileSync('/etc/letsencrypt/live/tube.quinzel.tech/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/tube.quinzel.tech/cert.pem')
+  }, app).listen(3003, function(){
+    console.log("Express server listening on port 3003, ENV=production")
   })
 } else {
-  http.createServer(app).listen(3000, function() {
-    console.log("Express server listening on port 3000, ENV=staging")
+  http.createServer(app).listen(3003, function() {
+    console.log("Express server listening on port 3003, ENV=staging")
   })
 }

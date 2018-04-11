@@ -1,2 +1,2 @@
-rsync -rave "ssh -i ~/.ssh/id_rsa" * root@207.148.18.22:ayht;
-ssh root@207.148.18.22 -i ~/.ssh/id_rsa "cd ayht && npm install && sudo supervisorctl restart ayht"
+rsync -rave "ssh -i ~/.ssh/id_rsa" * root@207.148.18.22:tube;
+ssh root@207.148.18.22 -i ~/.ssh/id_rsa "cd tube && npm install && sudo supervisorctl restart tube"
