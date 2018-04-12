@@ -3,7 +3,6 @@ var filesToCache = [
   '/index.html',
   '/index.js',
   'js/fontawesome-all.min.js',
-  '/img/icons/white'
 ];
 
 self.addEventListener('install', function(e) {

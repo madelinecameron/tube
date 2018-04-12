@@ -35,7 +35,7 @@ router.get('/search', (req, res, next) => {
             public_id: video.id
           }, (err, result) => { 
             console.log("ERR:", err, result)
-            return resolve(result.eager[1].url)
+            return resolve(result.eager[1].secure_url)
           })
       })
     })
