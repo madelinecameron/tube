@@ -17,23 +17,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css"/>
     <script defer src="/js/fontawesome-all.min.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script defer>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAcgKCOv1_WwG-b47jmLC3yYqIxfPJbcN0",
-        authDomain: "ayht-6064d.firebaseapp.com",
-        databaseURL: "https://ayht-6064d.firebaseio.com",
-        projectId: "ayht-6064d",
-        storageBucket: "",
-        messagingSenderId: "526856708401"
-      };
-      firebase.initializeApp(config);
-    </script>
-
-    <script src="https://js.stripe.com/v3/" defer></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117344482-1"></script>
@@ -53,22 +36,6 @@
           })
       }
     </script>
-
-<!--     <script>
-      const messaging = firebase.messaging();
-
-      messaging.requestPermission()
-      .then(function() {
-        console.log('Notification permission granted.');
-        return messaging.getToken();
-      })
-      .then(function(token) {
-        console.log(token);
-      })
-      .catch(function(err) {
-        console.log('Unable to get permission to notify.', err);
-      })
-    </script> -->
   </head>
   <body>
     <noscript>
