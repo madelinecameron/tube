@@ -8,11 +8,9 @@ const cloudinary = require('cloudinary')
 const router = express.Router()
 
 router.get('/search', (req, res, next) => {
-  console.log("BLEH:", req.query)
-
   const opts = {
     maxResults: 10,
-    key: 'AIzaSyA4xtLA0hDWOMYNl7VVFNGqb0FOWZdC1QE'
+    key: process.env.GOOGLE_API_KEY
   }
 
   youtubeSearch(req.query.term, opts, (err, results) => {
@@ -25,17 +23,12 @@ router.get('/search', (req, res, next) => {
         cloudinary.v2.uploader.upload(video.thumbnails.high.url, 
           { 
             eager: [{
-              width: 300,
-              height: 168,
-              crop: "limit"
-            }, {
-              width: 300, height: 168, crop: 'pad', background: "black"
+              width: 300, height: 168, crop: 'lfill', background: "black", gravity: 'center'
             }],
             tags: [ video.id ],
             public_id: video.id
           }, (err, result) => { 
-            console.log("ERR:", err, result)
-            return resolve(result.eager[1].secure_url)
+            return resolve(result.eager[0].secure_url)
           })
       })
     })

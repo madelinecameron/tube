@@ -4,6 +4,7 @@ const html = require('choo/html')
 const request = require('superagent')
 const getFormData = require('get-form-data')
 const moment = require('moment')
+const webWorker = require('webworkify')
 
 module.exports = (state, emit) => {
   const search = (e) => {
@@ -11,19 +12,19 @@ module.exports = (state, emit) => {
 
     const data = getFormData(e.target)
 
-    state.searchTerm = data.searchTerm
+    state.buttonContents = html`
+      <i class="fal fa-spinner fa-pulse"></i>
+    `
+    state.worker = webWorker(require('../lib/findVideos'))
+    state.worker.postMessage(data.searchTerm)
+    state.worker.onmessage = (e) => {
+        state.videos = e.data 
 
-    request('/api/search')
-      .query({ term: data.searchTerm })
-      .end((err, resp) => {
-        if (err) {
-          return
-        }
-
-        state.videos = resp.body
-
+        state.buttonContents = 'Search'
         emit('render')
-      })
+    }
+
+    emit('render')
   }
   return html`
     <div>
@@ -39,7 +40,7 @@ module.exports = (state, emit) => {
           </div>
           <form class="mt3" onsubmit=${search}>
             <input type="text" class="pa2" name="searchTerm" value=${state.searchTerm || ''}>
-            <button type="submit" class="pa2">Search</button>
+            <button type="submit" class="pa2">${state.buttonContents || 'Search'}</button>
           </form>
         </div>
       </section>
@@ -53,8 +54,7 @@ module.exports = (state, emit) => {
                     <img src="${video.thumbnail}" alt="${video.title}">
                   </div>
                   <div class="flex flex-column pl3">
-                    <div class="b">${video.title}</div>
-                    <div>${video.description}</div>
+                    <div class="b ttl">${video.title}</div>
                   </div>
                 </div>
               </a>

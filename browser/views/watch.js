@@ -8,7 +8,7 @@ const moment = require('moment')
 module.exports = (state, emit) => {
   const back = (e) => {
     e.preventDefault()
-    console.log("BLEH:", )
+
     emit('pushState', '/')
   }
 

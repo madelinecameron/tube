@@ -56,6 +56,7 @@
     "tippy.js": "^2.0.9",
     "twilio": "^3.11.0",
     "unique-string": "^1.0.0",
+    "webworkify": "^1.5.0",
     "youtube-search": "^1.1.0"
   },
   "devDependencies": {
