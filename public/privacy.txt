@@ -1,0 +1,9 @@
+So YouTube requires me to show you this to use their API. 
+
+This site uses YouTube's API (duh).
+
+If you use this service you will expose info to YouTube and be bound by YouTube's policies, you are required to "read" this: http://www.google.com/policies/privacy
+
+I am tracking you through Google Analytics so anything Google knows, I might.
+
+So have fun ✌️

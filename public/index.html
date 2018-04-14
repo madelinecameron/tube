@@ -27,15 +27,6 @@
 
       gtag('config', 'UA-117344482-1');
     </script>
-
-    <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' })
-          .then(function() {
-            console.log('Service Worker Registered')
-          })
-      }
-    </script>
   </head>
   <body>
     <noscript>

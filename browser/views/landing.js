@@ -34,7 +34,7 @@ module.exports = (state, emit) => {
         </div>
         <div class="mt2 flex flex-column justify-center items-center" id="signup">
           <div class="w-50">
-            Minimalist YouTube
+            Minimalist YouTube (not affliated or endorsed)
             <br><br>
             DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems
           </div>
@@ -62,6 +62,8 @@ module.exports = (state, emit) => {
           })
         })()}
       </section>
+      <footer class="tc">
+        <a href="/privacy.txt" target="_blank">Privacy Policy</a>
     </div>
   `
 }
