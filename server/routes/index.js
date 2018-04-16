@@ -1,9 +1,8 @@
 'use strict'
 
-const mongoose = require('mongoose')
-const express = require('express')
 const youtubeSearch = require('youtube-search')
 const cloudinary = require('cloudinary')
+const express = require('express')
 
 const router = express.Router()
 

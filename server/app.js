@@ -1,21 +1,15 @@
 'use strict'
 
-const express = require('express')
+const compression = require('compression')
 const bodyParser = require('body-parser')
 const ecstatic = require('ecstatic')
+const express = require('express')
 const path = require('path')
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
-const bcrypt = require('bcryptjs')
-const compression = require('compression')
 
 const app = express()
 const router = express.Router()
 
-app.set('port', 3000)
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
-app.use(require('express-session')({ secret: 'Ya78ss2FfGnUArFE', resave: true, saveUninitialized: true }));
 app.use(compression())
 
 app.use((req, res, next) => {

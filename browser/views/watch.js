@@ -1,9 +1,8 @@
 'use strict'
 
-const html = require('choo/html')
-const request = require('superagent')
 const getFormData = require('get-form-data')
-const moment = require('moment')
+const request = require('superagent')
+const html = require('choo/html')
 
 module.exports = (state, emit) => {
   const back = (e) => {

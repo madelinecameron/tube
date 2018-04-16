@@ -1,13 +1,12 @@
 {
-  "name": "AYHT",
-  "version": "0.0.1",
+  "name": "Tube",
+  "version": "1.0.0",
   "homepage": "",
-  "author": "",
+  "author": "Madeline Cameron",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/madelinecameron/tube"
   },
-  "main": "slushfile.js",
   "engines": {
     "node": ">= 0.10.26",
     "npm": ">=1.4.3"
@@ -16,46 +15,15 @@
     "test": "echo \"No tests\"",
     "start": "node server"
   },
-  "now": {
-    "env": {
-      "MONGO_URL": "@mongo_url",
-      "STRIPE_PRIVATE_KEY": "@stripe_private_key",
-      "MAILCHIMP_API_KEY": "@mailchimp_api_key",
-      "MAILGUN_API_KEY": "@mailgun_api_key",
-      "TWILIO_ACCT": "@twilio_acct",
-      "TWILIO_TOKEN": "@twilio_token",
-      "MIXPANEL_KEY": "@mixpanel_key"
-    }
-  },
   "dependencies": {
-    "async": "^2.6.0",
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "choo": "^6.0.0",
     "cloudinary": "^1.11.0",
     "compression": "^1.7.2",
     "ecstatic": "^3.0.0",
     "express": "^4.16.2",
-    "express-session": "^1.15.6",
     "get-form-data": "^1.2.5",
-    "handlebars": "^4.0.11",
-    "mailchimp-api-v3": "^1.8.0",
-    "mailgun-js": "^0.14.1",
-    "markdown": "^0.5.0",
-    "mixpanel": "^0.9.0",
-    "moment": "^2.20.1",
-    "moment-timezone": "^0.5.14",
-    "mongoose": "^4.13.8",
-    "node-fetch": "^2.1.1",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "pick-random": "^2.0.0",
-    "stripe": "^5.4.0",
     "superagent": "^3.8.1",
-    "superagent-auth-bearer": "0.0.1",
-    "tippy.js": "^2.0.9",
-    "twilio": "^3.11.0",
-    "unique-string": "^1.0.0",
     "webworkify": "^1.5.0",
     "youtube-search": "^1.1.0"
   },
@@ -66,6 +34,6 @@
     "bankai": "^8.0.0",
     "rollupify": "^0.4.0"
   },
-  "license": "ISC",
+  "license": "MIT",
   "description": ""
 }
