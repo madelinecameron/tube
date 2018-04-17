@@ -25,8 +25,32 @@ module.exports = (state, emit) => {
 
     emit('render')
   }
+
+  const installPlugin = (e) => {
+    e.preventDefault()
+
+    window.external.AddSearchProvider('/search.xml')
+  }
+
+  if (state.query.q && !state.videos) {
+    state.buttonContents = html`
+      <i class="fal fa-spinner fa-pulse"></i>
+    `
+    state.worker = webWorker(require('../lib/findVideos'))
+    state.worker.postMessage(state.query.q)
+    state.worker.onmessage = (e) => {
+        state.videos = e.data 
+
+        state.buttonContents = 'Search'
+        emit('render')
+    }
+
+    emit('render')
+  }
+
   return html`
     <div>
+      <a href="#" onclick=${installPlugin}>Install Search</a>
       <section class="mt3 tc">
         <div class="flex justify-center">
           <div id="header" class="f2 flex">Tube</div>
@@ -38,7 +62,7 @@ module.exports = (state, emit) => {
             DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems
           </div>
           <form class="mt3" onsubmit=${search}>
-            <input type="text" class="pa2" name="searchTerm" value=${state.searchTerm || ''}>
+            <input type="text" class="pa2" name="searchTerm" value=${state.searchTerm || state.query.q || ''}>
             <button type="submit" class="pa2">${state.buttonContents || 'Search'}</button>
           </form>
         </div>
