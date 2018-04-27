@@ -1,7 +1,6 @@
 'use strict'
 
 const youtubeSearch = require('youtube-search')
-const cloudinary = require('cloudinary')
 const express = require('express')
 
 const router = express.Router()
