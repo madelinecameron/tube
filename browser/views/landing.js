@@ -11,6 +11,7 @@ module.exports = (state, emit) => {
 
     const data = getFormData(e.target)
 
+    state.searchTerm = data.searchTerm
     state.buttonContents = html`
       <i class="fal fa-spinner fa-pulse"></i>
     `
@@ -50,7 +51,6 @@ module.exports = (state, emit) => {
 
   return html`
     <div>
-      <a href="#" onclick=${installPlugin}>Install Search</a>
       <section class="mt3 tc">
         <div class="flex justify-center">
           <div id="header" class="f2 flex">Tube</div>
@@ -85,8 +85,9 @@ module.exports = (state, emit) => {
           })
         })()}
       </section>
-      <footer class="tc">
+      <footer class="t flex flex-column items-center\">
         <a href="/privacy.txt" target="_blank">Privacy Policy</a>
+        <a href="#" onclick=${installPlugin}>Install Search</a>
     </div>
   `
 }
