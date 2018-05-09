@@ -14,8 +14,8 @@ module.exports = (state, emit) => {
   return html`
     <div>
       <div class="mb3">
-        <a href="#" onclick=${back} class="black">
-          <i class="fal fa-arrow-alt-circle-left fa-3x"></i>
+        <a href="#" onclick=${back} class="black no-underline ma3">
+          Back
         </a>
       </div>
       <style>.embed-container { position: relative; padding-bottom: 46.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>

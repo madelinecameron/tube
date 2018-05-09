@@ -3,27 +3,32 @@
 
 var request=require("superagent");module.exports=function(e){e.addEventListener("message",function(t){request("https://tube.quinzel.tech/api/search").query({term:t.data}).end(function(t,s){t||e.postMessage(s.body);});});};
 
-},{"superagent":32}],2:[function(require,module,exports){
+},{"superagent":33}],2:[function(require,module,exports){
 'use strict';
 
-var landing=require("../views/landing"); var watch=require("../views/watch");module.exports=function(e){e.route("/",landing),e.route("/watch",watch);};
+var playlist=require("../views/playlist"); var landing=require("../views/landing"); var watch=require("../views/watch");module.exports=function(e){e.route("/",landing),e.route("/watch",watch),e.route("/playlist",playlist);};
 
-},{"../views/landing":3,"../views/watch":4}],3:[function(require,module,exports){
+},{"../views/landing":3,"../views/playlist":4,"../views/watch":5}],3:[function(require,module,exports){
 'use strict';
 
-function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n      <i class="fal fa-spinner fa-pulse"></i>\n    '],['\n      <i class="fal fa-spinner fa-pulse"></i>\n    ']); var _templateObject2=_taggedTemplateLiteral(['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex">Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube (not affliated or endorsed)\n            <br><br>\n            DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">','</button>\n          </form>\n        </div>\n      </section>\n      <section id="videos" class="flex flex-column pl4">\n        ','\n      </section>\n      <footer class="t flex flex-column items-center">\n        <a href="/privacy.txt" target="_blank">Privacy Policy</a>\n        <a href="#" onclick=',">Install Search</a>\n    </div>\n  "],['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex">Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube (not affliated or endorsed)\n            <br><br>\n            DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">','</button>\n          </form>\n        </div>\n      </section>\n      <section id="videos" class="flex flex-column pl4">\n        ','\n      </section>\n      <footer class="t flex flex-column items-center\\">\n        <a href="/privacy.txt" target="_blank">Privacy Policy</a>\n        <a href="#" onclick=',">Install Search</a>\n    </div>\n  "]); var _templateObject3=_taggedTemplateLiteral(['\n              <a href="/watch?v=','" class="flex justify-center">\n                <div class="video flex mb3 w-50 items-center">\n                  <div>\n                    <img src="','" alt="','">\n                  </div>\n                  <div class="flex flex-column pl3">\n                    <div class="b ttl">',"</div>\n                  </div>\n                </div>\n              </a>\n            "],['\n              <a href="/watch?v=','" class="flex justify-center">\n                <div class="video flex mb3 w-50 items-center">\n                  <div>\n                    <img src="','" alt="','">\n                  </div>\n                  <div class="flex flex-column pl3">\n                    <div class="b ttl">',"</div>\n                  </div>\n                </div>\n              </a>\n            "]); var getFormData=require("get-form-data"); var webWorker=require("webworkify"); var request=require("superagent"); var html=require("choo/html");module.exports=function(e,t){return e.query.q&&!e.videos&&(e.buttonContents=html(_templateObject),e.worker=webWorker(require("../lib/findVideos")),e.worker.postMessage(e.query.q),e.worker.onmessage=function(n){e.videos=n.data,e.buttonContents="Search",t("render");},t("render")),html(_templateObject2,function(n){n.preventDefault();var a=getFormData(n.target);e.searchTerm=a.searchTerm,e.buttonContents=html(_templateObject),e.worker=webWorker(require("../lib/findVideos")),e.worker.postMessage(a.searchTerm),e.worker.onmessage=function(n){e.videos=n.data,e.buttonContents="Search",t("render");},t("render");},e.searchTerm||e.query.q||"",e.buttonContents||"Search",(e.videos||[]).map(function(e){return html(_templateObject3,e.id,e.thumbnail,e.title,e.title)}),function(e){e.preventDefault(),window.external.AddSearchProvider("/search.xml");})};
+function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n      <i class="fal fa-spinner fa-pulse"></i>\n    '],['\n      <i class="fal fa-spinner fa-pulse"></i>\n    ']); var _templateObject2=_taggedTemplateLiteral(["\n      ...\n    "],["\n      ...\n    "]); var _templateObject3=_taggedTemplateLiteral(['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex">Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube (not affliated or endorsed)\n            <br><br>\n            DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">','</button>\n          </form>\n        </div>\n      </section>\n      <div class="mw9 center ph3-ns">\n        <div class="cf ph2-ns flex-ns">\n          <div class="flex pl3 flex-column w-10-ns mb3 order-1-ns" id="playlist">\n            ',"\n            ",'\n          </div>\n          <div id="videos" class="flex flex-column pr4 w-90-ns order-0-ns">\n            ','\n          </div>\n        </div>\n      </div>\n      <footer class="tc flex flex-column">\n        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="mb1">\n          <input type="hidden" name="cmd" value="_s-xclick">\n          <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----\n          ">\n          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">\n          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">\n        </form>\n        <a href="/privacy.txt" target="_blank">Privacy Policy</a>\n        ',"\n    </div>\n  "],['\n    <div>\n      <section class="mt3 tc">\n        <div class="flex justify-center">\n          <div id="header" class="f2 flex">Tube</div>\n        </div>\n        <div class="mt2 flex flex-column justify-center items-center" id="signup">\n          <div class="w-50">\n            Minimalist YouTube (not affliated or endorsed)\n            <br><br>\n            DM me on Twitter (<a href="https://twitter.com/madamelic" target="_blank">@madamelic</a>) for questions or problems\n          </div>\n          <form class="mt3" onsubmit=','>\n            <input type="text" class="pa2" name="searchTerm" value=','>\n            <button type="submit" class="pa2">','</button>\n          </form>\n        </div>\n      </section>\n      <div class="mw9 center ph3-ns">\n        <div class="cf ph2-ns flex-ns">\n          <div class="flex pl3 flex-column w-10-ns mb3 order-1-ns" id="playlist">\n            ',"\n            ",'\n          </div>\n          <div id="videos" class="flex flex-column pr4 w-90-ns order-0-ns">\n            ','\n          </div>\n        </div>\n      </div>\n      <footer class="tc flex flex-column">\n        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="mb1">\n          <input type="hidden" name="cmd" value="_s-xclick">\n          <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----\n          ">\n          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">\n          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">\n        </form>\n        <a href="/privacy.txt" target="_blank">Privacy Policy</a>\n        ',"\n    </div>\n  "]); var _templateObject4=_taggedTemplateLiteral(['<div class="mb2"><a href="#" onclick=',' class="no-underline">▶️</a></div>'],['<div class="mb2"><a href="#" onclick=',' class="no-underline">▶️</a></div>']); var _templateObject5=_taggedTemplateLiteral(['<div class="pb2 ttl">',"</div>"],['<div class="pb2 ttl">',"</div>"]); var _templateObject6=_taggedTemplateLiteral(['\n                  <a href="/watch?v=','" class="flex justify-center no-underline">\n                    <div class="video flex mb3 w-50 items-center">\n                      <div class="pr2">\n                        <a href="#" onclick=',' class="no-underline">+</a>\n                      </div>\n                      <div>\n                        <img src="','" alt="','">\n                      </div>\n                      <div class="flex flex-column pl3">\n                        <div class="b ttl underline">',"</div>\n                      </div>\n                    </div>\n                </a>\n                "],['\n                  <a href="/watch?v=','" class="flex justify-center no-underline">\n                    <div class="video flex mb3 w-50 items-center">\n                      <div class="pr2">\n                        <a href="#" onclick=',' class="no-underline">+</a>\n                      </div>\n                      <div>\n                        <img src="','" alt="','">\n                      </div>\n                      <div class="flex flex-column pl3">\n                        <div class="b ttl underline">',"</div>\n                      </div>\n                    </div>\n                </a>\n                "]); var _templateObject7=_taggedTemplateLiteral(['<a href="#" onclick=',">Install Search</a>"],['<a href="#" onclick=',">Install Search</a>"]); var getFormData=require("get-form-data"); var webWorker=require("webworkify"); var request=require("superagent"); var html=require("choo/html");module.exports=function(e,t){var n=function(e){e.preventDefault(),window.external&&window.external.AddSearchProvider("/search.xml");};e.videoList||(e.videoList=[]),e.query.q&&!e.videos&&(e.buttonContents=html(_templateObject2),e.worker=webWorker(require("../lib/findVideos")),e.worker.postMessage(e.query.q),e.worker.onmessage=function(n){e.videos=n.data,e.buttonContents="Search",t("render");},t("render"));var a=function(e){e.preventDefault(),t("pushState","/playlist");};return html(_templateObject3,function(n){n.preventDefault();var a=getFormData(n.target);e.searchTerm=a.searchTerm,e.buttonContents=html(_templateObject),e.worker=webWorker(require("../lib/findVideos")),e.worker.postMessage(a.searchTerm),e.worker.onmessage=function(n){e.videos=n.data,e.buttonContents="Search",t("render");},t("render");},e.searchTerm||e.query.q||"",e.buttonContents||"Search",function(){if(e.videoList.length>0)return html(_templateObject4,a)}(),e.videoList.map(function(t){var n=e.videos.filter(function(e){return e.id==t})[0];return html(_templateObject5,n.title)}),(e.videos||[]).map(function(n){return html(_templateObject6,n.id,function(n){return function(a){a.preventDefault(),e.videoList.push(n),t("render");}}(n.id),n.thumbnail,n.title,n.title)}),function(){if(window&&window.external&&window.external.IsSearchProviderInstalled&&!window.external.IsSearchProviderInstalled("https://tube.quinzel.tech"))return html(_templateObject7,n)}())};
 
-},{"../lib/findVideos":1,"choo/html":9,"get-form-data":13,"superagent":32,"webworkify":42}],4:[function(require,module,exports){
+},{"../lib/findVideos":1,"choo/html":10,"get-form-data":14,"superagent":33,"webworkify":43}],4:[function(require,module,exports){
 'use strict';
 
-function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n    <div>\n      <div class="mb3">\n        <a href="#" onclick=',' class="black">\n          <i class="fal fa-arrow-alt-circle-left fa-3x"></i>\n        </a>\n      </div>\n      <style>.embed-container { position: relative; padding-bottom: 46.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <div class="embed-container">\n        <iframe src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>\n      </div>\n    </div>\n  '],['\n    <div>\n      <div class="mb3">\n        <a href="#" onclick=',' class="black">\n          <i class="fal fa-arrow-alt-circle-left fa-3x"></i>\n        </a>\n      </div>\n      <style>.embed-container { position: relative; padding-bottom: 46.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <div class="embed-container">\n        <iframe src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>\n      </div>\n    </div>\n  ']); var getFormData=require("get-form-data"); var request=require("superagent"); var html=require("choo/html");module.exports=function(e,t){return html(_templateObject,function(e){e.preventDefault(),t("pushState","/");},e.query.v)};
+function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n    <div>\n      <div class="mb3">\n        <a href="#" onclick=',' class="black no-underline ma3">\n          Back\n        </a>\n      </div>\n      <style>.player { position: relative; padding-bottom: 46.25%; height:100%; width:100%; overflow: hidden; max-width: 100%; } .player iframe, .player object, .player embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <script src="https://www.youtube.com/iframe_api"><\/script>\n      <div class="flex w-100 h-100">\n        <div id="player" class="player">\n        </div>\n        <div class="flex justify-center ml4">\n          <div class="flex flex-column" id="playlist">\n            ',"\n            ","\n          </div>\n        </div>\n      </div>\n    </div>\n  "],['\n    <div>\n      <div class="mb3">\n        <a href="#" onclick=',' class="black no-underline ma3">\n          Back\n        </a>\n      </div>\n      <style>.player { position: relative; padding-bottom: 46.25%; height:100%; width:100%; overflow: hidden; max-width: 100%; } .player iframe, .player object, .player embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <script src="https://www.youtube.com/iframe_api"><\/script>\n      <div class="flex w-100 h-100">\n        <div id="player" class="player">\n        </div>\n        <div class="flex justify-center ml4">\n          <div class="flex flex-column" id="playlist">\n            ',"\n            ","\n          </div>\n        </div>\n      </div>\n    </div>\n  "]); var _templateObject2=_taggedTemplateLiteral(['<div class="mb2"><a href="#" onclick=',' class="b">Next</a></div>'],['<div class="mb2"><a href="#" onclick=',' class="b">Next</a></div>']); var _templateObject3=_taggedTemplateLiteral(['<div class="pb2 ttl">',"</div>"],['<div class="pb2 ttl">',"</div>"]); var getFormData=require("get-form-data"); var request=require("superagent"); var html=require("choo/html");module.exports=function(e,t){function i(e){e.target.playVideo();}function a(t){t.data==YT.PlayerState.ENDED&&(e.videoList.shift(),n.loadVideoById(e.videoList[0]),n.startVideo());}var n=void 0;window.onYouTubeIframeAPIReady=function(){clearTimeout(l),n=new YT.Player("player",{videoId:e.videoList[0],events:{onReady:i,onStateChange:a}});};var l=setTimeout(function(){window.onYouTubeIframeAPIReady();},1500),d=function(t){t.preventDefault(),e.videoList.shift(),n.loadVideoById(e.videoList[0]),n.startVideo();};return html(_templateObject,function(e){e.preventDefault(),window.history.go(-1);},function(){if(e.videoList.length>0)return html(_templateObject2,d)}(),e.videoList.map(function(t){var i=e.videos.filter(function(e){return e.id==t})[0];return html(_templateObject3,i.title)}))};
 
-},{"choo/html":9,"get-form-data":13,"superagent":32}],5:[function(require,module,exports){
+},{"choo/html":10,"get-form-data":14,"superagent":33}],5:[function(require,module,exports){
+'use strict';
+
+function _taggedTemplateLiteral(e,t){return Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var _templateObject=_taggedTemplateLiteral(['\n    <div>\n      <div class="mb3">\n        <a href="#" onclick=',' class="black no-underline ma3">\n          Back\n        </a>\n      </div>\n      <style>.embed-container { position: relative; padding-bottom: 46.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <div class="embed-container">\n        <iframe src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>\n      </div>\n    </div>\n  '],['\n    <div>\n      <div class="mb3">\n        <a href="#" onclick=',' class="black no-underline ma3">\n          Back\n        </a>\n      </div>\n      <style>.embed-container { position: relative; padding-bottom: 46.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>\n      <div class="embed-container">\n        <iframe src="https://www.youtube.com/embed/','" frameborder="0" allowfullscreen></iframe>\n      </div>\n    </div>\n  ']); var getFormData=require("get-form-data"); var request=require("superagent"); var html=require("choo/html");module.exports=function(e,t){return html(_templateObject,function(e){e.preventDefault(),t("pushState","/");},e.query.v)};
+
+},{"choo/html":10,"get-form-data":14,"superagent":33}],6:[function(require,module,exports){
 'use strict';
 
 var choo=require("choo"); var app=choo();require("./lib/router")(app),document.body.appendChild(app.start());
 
-},{"./lib/router":2,"choo":10}],6:[function(require,module,exports){
+},{"./lib/router":2,"choo":11}],7:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -517,7 +522,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":39}],7:[function(require,module,exports){
+},{"util/":40}],8:[function(require,module,exports){
 var trailingNewlineRegex = /\n[\s]+$/
 var leadingNewlineRegex = /^\n[\s]+/
 var trailingSpaceRegex = /[\s]+$/
@@ -650,7 +655,7 @@ module.exports = function appendChild (el, childs) {
   }
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var hyperx = require('hyperx')
 var appendChild = require('./appendChild')
 
@@ -751,10 +756,10 @@ module.exports = hyperx(belCreateElement, {comments: true})
 module.exports.default = module.exports
 module.exports.createElement = belCreateElement
 
-},{"./appendChild":7,"hyperx":15}],9:[function(require,module,exports){
+},{"./appendChild":8,"hyperx":16}],10:[function(require,module,exports){
 module.exports = require('bel')
 
-},{"bel":8}],10:[function(require,module,exports){
+},{"bel":9}],11:[function(require,module,exports){
 var scrollToAnchor = require('scroll-to-anchor')
 var documentReady = require('document-ready')
 var nanolocation = require('nanolocation')
@@ -966,7 +971,7 @@ Choo.prototype.toString = function (location, state) {
   return html.toString()
 }
 
-},{"assert":6,"document-ready":12,"nanobus":17,"nanohref":18,"nanolocation":19,"nanomorph":20,"nanoquery":23,"nanoraf":24,"nanorouter":25,"nanotiming":26,"scroll-to-anchor":30,"xtend":43}],11:[function(require,module,exports){
+},{"assert":7,"document-ready":13,"nanobus":18,"nanohref":19,"nanolocation":20,"nanomorph":21,"nanoquery":24,"nanoraf":25,"nanorouter":26,"nanotiming":27,"scroll-to-anchor":31,"xtend":44}],12:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -1131,7 +1136,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict'
 
 var assert = require('assert')
@@ -1150,7 +1155,7 @@ function ready (callback) {
   })
 }
 
-},{"assert":6}],13:[function(require,module,exports){
+},{"assert":7}],14:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -1335,7 +1340,7 @@ getFormData.getNamedFormElementData = getNamedFormElementData;
 
 exports['default'] = getFormData;
 module.exports = exports['default'];
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = attributeToProperty
 
 var transform = {
@@ -1356,7 +1361,7 @@ function attributeToProperty (h) {
   }
 }
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var attrToProp = require('hyperscript-attribute-to-property')
 
 var VAR = 0, TEXT = 1, OPEN = 2, CLOSE = 3, ATTR = 4
@@ -1639,7 +1644,7 @@ var closeRE = RegExp('^(' + [
 ].join('|') + ')(?:[\.#][a-zA-Z0-9\u007F-\uFFFF_:-]+)*$')
 function selfClosing (tag) { return closeRE.test(tag) }
 
-},{"hyperscript-attribute-to-property":14}],16:[function(require,module,exports){
+},{"hyperscript-attribute-to-property":15}],17:[function(require,module,exports){
 assert.notEqual = notEqual
 assert.notOk = notOk
 assert.equal = equal
@@ -1663,7 +1668,7 @@ function assert (t, m) {
   if (!t) throw new Error(m || 'AssertionError')
 }
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var splice = require('remove-array-items')
 var nanotiming = require('nanotiming')
 var assert = require('assert')
@@ -1827,7 +1832,7 @@ Nanobus.prototype._emit = function (arr, eventName, data, uuid) {
   }
 }
 
-},{"assert":6,"nanotiming":26,"remove-array-items":29}],18:[function(require,module,exports){
+},{"assert":7,"nanotiming":27,"remove-array-items":30}],19:[function(require,module,exports){
 var assert = require('assert')
 
 var safeExternalLink = /(noopener|noreferrer) (noopener|noreferrer)/
@@ -1869,7 +1874,7 @@ function href (cb, root) {
   })
 }
 
-},{"assert":6}],19:[function(require,module,exports){
+},{"assert":7}],20:[function(require,module,exports){
 var assert = require('assert')
 
 module.exports = nanolocation
@@ -1881,7 +1886,7 @@ function nanolocation () {
   return pathname + hash
 }
 
-},{"assert":6}],20:[function(require,module,exports){
+},{"assert":7}],21:[function(require,module,exports){
 var assert = require('assert')
 var morph = require('./lib/morph')
 
@@ -2032,7 +2037,7 @@ function same (a, b) {
   return false
 }
 
-},{"./lib/morph":22,"assert":16}],21:[function(require,module,exports){
+},{"./lib/morph":23,"assert":17}],22:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -2076,7 +2081,7 @@ module.exports = [
   'onfocusout'
 ]
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var events = require('./events')
 var eventsLength = events.length
 
@@ -2242,7 +2247,7 @@ function updateAttribute (newNode, oldNode, name) {
   }
 }
 
-},{"./events":21}],23:[function(require,module,exports){
+},{"./events":22}],24:[function(require,module,exports){
 var reg = /([^?=&]+)(=([^&]*))?/g
 var assert = require('assert')
 
@@ -2259,7 +2264,7 @@ function qs (url) {
   return obj
 }
 
-},{"assert":16}],24:[function(require,module,exports){
+},{"assert":17}],25:[function(require,module,exports){
 'use strict'
 
 var assert = require('assert')
@@ -2296,7 +2301,7 @@ function nanoraf (render, raf) {
   }
 }
 
-},{"assert":6}],25:[function(require,module,exports){
+},{"assert":7}],26:[function(require,module,exports){
 var wayfarer = require('wayfarer')
 
 var isLocalFile = (/file:\/\//.test(typeof window === 'object' &&
@@ -2356,7 +2361,7 @@ function pathname (route, isElectron) {
   return route.replace(suffix, '').replace(normalize, '/')
 }
 
-},{"wayfarer":40}],26:[function(require,module,exports){
+},{"wayfarer":41}],27:[function(require,module,exports){
 var assert = require('assert')
 
 var onIdle = require('./lib/on-idle')
@@ -2400,7 +2405,7 @@ function noop (cb) {
   if (cb) onIdle(cb)
 }
 
-},{"./lib/on-idle":27,"assert":6}],27:[function(require,module,exports){
+},{"./lib/on-idle":28,"assert":7}],28:[function(require,module,exports){
 var assert = require('assert')
 
 var dftOpts = {}
@@ -2433,7 +2438,7 @@ function onIdle (cb, opts) {
   }
 }
 
-},{"assert":6}],28:[function(require,module,exports){
+},{"assert":7}],29:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -2619,7 +2624,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict'
 
 /**
@@ -2649,7 +2654,7 @@ module.exports = function removeItems(arr, startIdx, removeCount)
   arr.length = len
 }
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 module.exports = scrollToAnchor
 
 function scrollToAnchor (anchor, options) {
@@ -2661,7 +2666,7 @@ function scrollToAnchor (anchor, options) {
   }
 }
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 function Agent() {
   this._defaults = [];
 }
@@ -2683,7 +2688,7 @@ Agent.prototype._setDefaults = function(req) {
 
 module.exports = Agent;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 /**
  * Root reference for iframes.
  */
@@ -3603,7 +3608,7 @@ request.put = function(url, data, fn) {
   return req;
 };
 
-},{"./agent-base":31,"./is-object":33,"./request-base":34,"./response-base":35,"component-emitter":11}],33:[function(require,module,exports){
+},{"./agent-base":32,"./is-object":34,"./request-base":35,"./response-base":36,"component-emitter":12}],34:[function(require,module,exports){
 'use strict';
 
 /**
@@ -3620,7 +3625,7 @@ function isObject(obj) {
 
 module.exports = isObject;
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4316,7 +4321,7 @@ RequestBase.prototype._setTimeouts = function() {
   }
 };
 
-},{"./is-object":33}],35:[function(require,module,exports){
+},{"./is-object":34}],36:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4452,7 +4457,7 @@ ResponseBase.prototype._setStatusProperties = function(status){
     this.notFound = 404 == status;
 };
 
-},{"./utils":36}],36:[function(require,module,exports){
+},{"./utils":37}],37:[function(require,module,exports){
 'use strict';
 
 /**
@@ -4525,7 +4530,7 @@ exports.cleanHeader = function(header, changesOrigin){
   return header;
 };
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -4550,14 +4555,14 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -5147,7 +5152,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":38,"_process":28,"inherits":37}],40:[function(require,module,exports){
+},{"./support/isBuffer":39,"_process":29,"inherits":38}],41:[function(require,module,exports){
 var assert = require('assert')
 var trie = require('./trie')
 
@@ -5214,7 +5219,7 @@ function Wayfarer (dft) {
   }
 }
 
-},{"./trie":41,"assert":6}],41:[function(require,module,exports){
+},{"./trie":42,"assert":7}],42:[function(require,module,exports){
 var mutate = require('xtend/mutable')
 var assert = require('assert')
 var xtend = require('xtend')
@@ -5353,7 +5358,7 @@ Trie.prototype.mount = function (route, trie) {
   }
 }
 
-},{"assert":6,"xtend":43,"xtend/mutable":44}],42:[function(require,module,exports){
+},{"assert":7,"xtend":44,"xtend/mutable":45}],43:[function(require,module,exports){
 var bundleFn = arguments[3];
 var sources = arguments[4];
 var cache = arguments[5];
@@ -5435,7 +5440,7 @@ module.exports = function (fn, options) {
     return worker;
 };
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -5456,7 +5461,7 @@ function extend() {
     return target
 }
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -5475,4 +5480,4 @@ function extend(target) {
     return target
 }
 
-},{}]},{},[5]);
+},{}]},{},[6]);
