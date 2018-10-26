@@ -4,7 +4,7 @@ const request = require('superagent')
 
 module.exports = (self) => {
   self.addEventListener('message', (e) => {
-    request('https://tube.quinzel.tech/api/search')
+    request('https://tube.qnzl.co/api/search')
       .query({ term: e.data })
       .end((err, resp) => {
         if (err) {
