@@ -9,10 +9,11 @@ router.get('/search', (req, res, next) => {
 
   const opts = {
     maxResults: 10,
+    pageToken: req.query.pageToken,
     key: process.env.GOOGLE_API_KEY
   }
 
-  youtubeSearch(req.query.term, opts, (err, results) => {
+  youtubeSearch(req.query.term, opts, (err, results, pageInfo) => {
     if (err) return console.log(err)
 
     results = results.filter(vid => vid.id.length <= 11)
@@ -23,7 +24,7 @@ router.get('/search', (req, res, next) => {
       return video
     })
 
-    return res.json(videos)
+    return res.json({ videos, pageInfo })
   })
 })
 
