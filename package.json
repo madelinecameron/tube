@@ -31,6 +31,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babelify": "^7.3.0",
     "bankai": "^8.0.0",
+    "budo": "^11.6.1",
     "rollupify": "^0.4.0"
   },
   "license": "MIT",
