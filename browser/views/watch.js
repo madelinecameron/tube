@@ -24,10 +24,4 @@ module.exports = (state, emit) => {
       </div>
     </div>
   `
-
-        // <div class="absolute" style="z-index:1">
-      //   <a href="#" onclick=${back} class="black">
-      //     <i class="fal fa-arrow-alt-circle-left fa-3x"></i>
-      //   </a>
-      // </div>
 }
