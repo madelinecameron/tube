@@ -91,7 +91,7 @@ module.exports = (state, emit) => {
   const playlist = (e) => {
     e.preventDefault()
 
-    emit('pushState', '/playlist')
+    return emit('pushState', '/watch')
   }
 
   return html`
