@@ -16,11 +16,11 @@
     "start": "node server"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.20.1",
     "choo": "^6.0.0",
     "compression": "^1.7.2",
     "ecstatic": "^3.0.0",
-    "express": "^4.16.2",
+    "express": "^4.18.2",
     "get-form-data": "^1.2.5",
     "superagent": "^3.8.1",
     "webworkify": "^1.5.0",
