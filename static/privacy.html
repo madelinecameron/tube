@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tube — Privacy</title>
+    <meta name="color-scheme" content="dark light" />
+    <style>
+      :root { --bg:#0e0e10; --fg:#e8e8ea; --dim:#8a8a93; color-scheme: dark light; }
+      @media (prefers-color-scheme: light) { :root { --bg:#fbfbfa; --fg:#16161a; --dim:#6e6e78; } }
+      body {
+        margin: 0 auto; max-width: 42rem; padding: 3rem 1.25rem 5rem;
+        background: var(--bg); color: var(--fg);
+        font: 15px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      h1 { font-size: 1.35rem; font-weight: 500; }
+      h2 { font-size: 1rem; font-weight: 600; margin-top: 2.25rem; }
+      a { color: inherit; }
+      .dim { color: var(--dim); }
+      code { font-size: 0.9em; }
+    </style>
+  </head>
+  <body>
+    <h1>Privacy</h1>
+    <p class="dim">Last updated 27 July 2026.</p>
+
+    <p>
+      Tube is a small personal front end for YouTube. It is not affiliated with,
+      sponsored by, or endorsed by YouTube or Google.
+    </p>
+
+    <h2>What this site collects</h2>
+    <p>
+      Nothing. There are no accounts, no analytics, no advertising, and no
+      cookies set by this site. Search terms you type are sent to this site's
+      server only to be forwarded to the YouTube Data API, are held in memory for
+      at most 30 minutes so that repeating a search does not re-query YouTube,
+      and are never written to disk. The server keeps ordinary web-server request
+      logs, which include IP addresses, for operational purposes.
+    </p>
+
+    <h2>YouTube</h2>
+    <p>
+      Tube uses YouTube API Services. Search results and video playback come from
+      YouTube. When you play something, the embedded YouTube player loads from
+      <code>youtube-nocookie.com</code>, but playback still involves YouTube
+      receiving data about that request, and YouTube may set storage in your
+      browser once playback begins.
+    </p>
+    <p>By using this site you are also bound by:</p>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/t/terms" target="_blank" rel="noreferrer noopener">
+          YouTube Terms of Service
+        </a>
+      </li>
+      <li>
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer noopener">
+          Google Privacy Policy
+        </a>
+      </li>
+    </ul>
+    <p>
+      You can review and revoke this site's access to your data — and see what
+      Google holds — via the
+      <a href="https://myaccount.google.com/permissions" target="_blank" rel="noreferrer noopener">
+        Google security settings page</a>.
+    </p>
+
+    <h2>Data retention</h2>
+    <p>
+      Cached YouTube API responses expire automatically: 30 minutes for searches,
+      6 hours for stations, and everything is discarded when the server restarts.
+      No YouTube API data is stored beyond that, well inside the 30-day maximum
+      the YouTube API Services Developer Policies allow.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions or complaints about privacy:
+      <a href="mailto:me@maddie.today">me@maddie.today</a>.
+    </p>
+
+    <p><a href="/">← back to Tube</a></p>
+  </body>
+</html>

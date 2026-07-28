@@ -1,0 +1,39 @@
+# Render blueprint. Deploys the `runtime` stage of the Dockerfile — the last
+# stage, which is what Render builds by default, so no build target is needed.
+#
+# Render replaces Caddy entirely: TLS, certificate renewal, and the custom domain
+# are handled by the platform. `Caddyfile` and `docker-compose.yml` are for the
+# self-hosted path and are unused here.
+
+services:
+  - name: tube
+    type: web
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    region: oregon
+    healthCheckPath: /healthz
+
+    # Starter, not free, on purpose. The cache is in-memory only (30 min for
+    # searches, 6 h for stations) and free instances spin down when idle, which
+    # would drop the cache and re-spend YouTube quota on every wake-up. Search
+    # costs 100 of 10,000 daily units.
+    plan: starter
+
+    # One instance, deliberately. Each instance keeps its own cache, so scaling
+    # out multiplies quota draw without serving more people.
+    numInstances: 1
+
+    autoDeployTrigger: commit
+
+    envVars:
+      # Set in the dashboard and never committed. `sync: false` makes Render
+      # prompt for it instead of storing it here.
+      - key: YOUTUBE_API_KEY
+        sync: false
+
+      # The server falls back to 127.0.0.1 (server/index.js), which would make
+      # the health check fail. The Dockerfile already sets this; repeated here so
+      # the blueprint stays correct if the runtime ever changes to native Node.
+      - key: HOST
+        value: 0.0.0.0

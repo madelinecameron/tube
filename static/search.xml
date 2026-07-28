@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Tube</ShortName>
+  <Description>A deliberately small YouTube front end</Description>
+  <Tags>youtube minimal</Tags>
+  <Contact>me@maddie.today</Contact>
+  <Url type="text/html" template="https://tube.quinzel.tech/?q={searchTerms}"/>
+  <Query role="example" searchTerms="lofi"/>
+  <Developer>Madeline Cameron</Developer>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Language>en-us</Language>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>

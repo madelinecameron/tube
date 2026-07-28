@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+.playwright-mcp/
+.claude/
+/home.png
+/watch.png

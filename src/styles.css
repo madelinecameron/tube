@@ -1,0 +1,256 @@
+:root {
+  --bg: #0e0e10;
+  --fg: #e8e8ea;
+  --dim: #8a8a93;
+  --line: #26262b;
+  --accent: #e8e8ea;
+  color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbfbfa;
+    --fg: #16161a;
+    --dim: #6e6e78;
+    --line: #e2e2df;
+    --accent: #16161a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- home ---------- */
+
+.home {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 16vh 1.25rem 4rem;
+}
+
+.home h1 {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+form[role="search"] {
+  display: flex;
+  gap: 0.5rem;
+}
+
+input[type="search"] {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline-offset: 2px;
+}
+
+input[type="search"]:focus-visible {
+  border-color: var(--accent);
+}
+
+form[role="search"] button {
+  padding: 0.7rem 1.1rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.stations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.stations button {
+  padding: 0.45rem 0.9rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--dim);
+  cursor: pointer;
+}
+
+.stations button:hover,
+.stations button:focus-visible,
+form[role="search"] button:hover {
+  color: var(--fg);
+  border-color: var(--accent);
+}
+
+/* ---------- results ---------- */
+
+.results {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.results button {
+  display: flex;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.results button:hover,
+.results button:focus-visible {
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+}
+
+.results img {
+  flex: none;
+  width: 168px;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--line);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.channel {
+  color: var(--dim);
+  font-size: 0.85em;
+}
+
+.more {
+  margin: 1.25rem auto 0;
+  display: block;
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--dim);
+  cursor: pointer;
+}
+
+/* ---------- watch ---------- */
+
+.watch {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.back {
+  margin-bottom: 0.9rem;
+  padding: 0.35rem 0;
+  background: transparent;
+  border: 0;
+  color: var(--dim);
+  cursor: pointer;
+}
+
+.back:hover {
+  color: var(--fg);
+}
+
+/*
+ * 16:9, and never below the 200x200 minimum viewport the YouTube API requires.
+ * Nothing is ever positioned on top of this box: overlaying the player or its
+ * controls is a Terms of Service violation.
+ */
+.player {
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  min-height: 200px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.player iframe,
+.player > div {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.playing {
+  margin: 0.9rem 0 0;
+  color: var(--dim);
+}
+
+/* ---------- misc ---------- */
+
+.notice {
+  margin-top: 1.5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--dim);
+}
+
+.attribution {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+}
+
+.attribution a {
+  color: var(--dim);
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  color: var(--fg);
+  text-decoration: underline;
+}
+
+@media (max-width: 32rem) {
+  .home {
+    padding-top: 8vh;
+  }
+
+  .results img {
+    width: 120px;
+    height: 68px;
+  }
+}

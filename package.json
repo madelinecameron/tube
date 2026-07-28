@@ -1,39 +1,34 @@
 {
-  "name": "Tube",
-  "version": "1.0.0",
-  "homepage": "",
+  "name": "tube",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A deliberately small YouTube front end: a search box and a few endless stations.",
   "author": "Madeline Cameron",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/madelinecameron/tube"
   },
   "engines": {
-    "node": ">= 0.10.26",
-    "npm": ">=1.4.3"
+    "node": ">=20"
   },
   "scripts": {
-    "test": "echo \"No tests\"",
-    "start": "node server"
+    "dev": "concurrently -k -n vite,api -c cyan,magenta \"vite\" \"node --watch server\"",
+    "build": "vite build",
+    "start": "node server",
+    "preview": "npm run build && node server"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "choo": "^6.0.0",
-    "compression": "^1.7.2",
-    "ecstatic": "^3.0.0",
-    "express": "^4.16.2",
-    "get-form-data": "^1.2.5",
-    "superagent": "^3.8.1",
-    "webworkify": "^1.5.0",
-    "youtube-search": "^1.1.0"
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.1",
+    "helmet": "^8.3.0"
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babelify": "^7.3.0",
-    "bankai": "^8.0.0",
-    "budo": "^11.6.1",
-    "rollupify": "^0.4.0"
-  },
-  "license": "MIT",
-  "description": ""
+    "@preact/preset-vite": "^2.10.6",
+    "concurrently": "^9.1.2",
+    "preact": "^10.29.7",
+    "vite": "^8.1.5"
+  }
 }

@@ -1,0 +1,34 @@
+{
+	email {$ACME_EMAIL}
+}
+
+{$DOMAIN} {
+	# Certificates are obtained and renewed automatically. There is no certbot,
+	# no renewal cron, and no cert paths to get out of sync.
+
+	header {
+		# This instance is unlisted rather than gated, so lean on every "do not
+		# index me" signal there is. robots.txt covers well-behaved crawlers;
+		# this header covers the ones that ignore it, plus the AI-scraper opt-outs.
+		X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+		-Server
+	}
+
+	# Compression is handled by the app (express `compression`), so no `encode`
+	# here — it would only re-examine responses that are already encoded.
+	reverse_proxy app:3003 {
+		header_up X-Real-IP {remote_host}
+	}
+
+	log {
+		output stdout
+		format console
+	}
+}
+
+# To put a password in front of it later, add this inside the site block above
+# and restart. Generate the hash with:  docker compose run --rm caddy caddy hash-password
+#
+#	basic_auth {
+#		you $2a$14$...
+#	}
